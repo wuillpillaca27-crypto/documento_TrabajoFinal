@@ -12,7 +12,7 @@ Docente: Ing. Lizbeth Jaico Quispe
 
 Proyecto final que extiende el sistema operativo educativo xv6-riscv mediante una nueva llamada al sistema, `getmetrics()`, y un monitor gráfico externo desarrollado en Python. Permite observar los procesos, sus estados, la memoria física libre y los ticks del kernel durante la ejecución de xv6 en QEMU, así como conservar las mediciones en CSV.
 
-![Monitor en funcionamiento](documento_TrabajoFinal/05_Evidencias/05_monitor_inicial.png)
+![Monitor en funcionamiento](Imagenes/05_monitor_inicial.png)
 
 ## Problema y justificación
 
@@ -52,41 +52,24 @@ flowchart TD
     H --> I[stresstest / kill]
 ```
 
-![Arquitectura del proyecto](documento_TrabajoFinal/05_Evidencias/arquitectura_monitor.png)
+![Arquitectura del proyecto](Imagenes/arquitectura_monitor.png)
 
 La syscall recopila las métricas y las copia al espacio de usuario mediante `copyout()`. `sysmon` emite muestras cada 10 ticks; Python lee la consola de QEMU mediante un hilo independiente y una cola. La interfaz consulta la cola cada 200 ms y conserva los últimos 60 puntos en las gráficas, además del historial para exportación.
 
 ## Estructura del repositorio
 
 ```text
-Repositorio/
+documento_TrabajoFinal/
+├── Imagenes/
 ├── kernel/
-│   ├── metrics.h
-│   ├── defs.h
-│   ├── kalloc.c
-│   ├── proc.c
-│   ├── sysproc.c
-│   ├── syscall.h
-│   └── syscall.c
 ├── user/
-│   ├── sysmon.c
-│   ├── stresstest.c
-│   ├── user.h
-│   └── usys.pl
-├── mkfs/
-├── documento_TrabajoFinal/
-│   ├── README.md
-│   ├── 01_Trabajo_Monografico.pdf
-│   ├── 02_Presentacion_TrabajoFinal.pdf
-│   ├── 03_Guia_Implementacion_Con_Evidencias.pdf
-│   ├── 03_Guia_Implementacion_Con_Evidencias.md
-│   ├── 04_Documentacion_Complementaria/
-│   ├── 05_Evidencias/
-│   └── 06_Resultados/
-├── Makefile
+├── Guia de Implementacion.md
+├── Guia de Proyecto Final xv6.pdf
+├── Monitor de Rendimiento en Tiempo Real para xv6...pdf
+├── Monitor_xv6-riscv_exposicion.pdf
+├── monitor_xv6 (1).py
 ├── monitor_xv6.py
 ├── requirements.txt
-├── LICENSE
 └── README.md
 ```
 
@@ -106,7 +89,7 @@ Se muestran los archivos relevantes del proyecto; los demás archivos originales
 | `user/usys.pl` y `user/user.h` | Exponen la syscall a los programas de usuario. |
 | `Makefile` | Integra `_sysmon` y `_stresstest` en `UPROGS` y conserva `_kill`. |
 
-El código y los pasos detallados se encuentran en la [guía de implementación](documento_TrabajoFinal/03_Guia_Implementacion_Con_Evidencias.md) y en [Integración del kernel](documento_TrabajoFinal/04_Documentacion_Complementaria/Integracion_kernel.md).
+El código y los pasos detallados se encuentran en la [guía de implementación](Guia%20de%20Implementacion.md).
 
 ### Protocolo de comunicación
 
@@ -155,6 +138,8 @@ python3 -c "import tkinter, matplotlib; print('PYTHON OK')"
 La disponibilidad y compatibilidad del compilador dependen de la distribución y de la variante xv6 utilizada.
 
 ### 3. Verificar la integración
+
+La estructura visible del repositorio no muestra un Makefile ni el árbol base completo de xv6. Integra los archivos en la variante original del curso antes de ejecutar los siguientes comandos.
 
 Desde la raíz que contiene el `Makefile` de xv6:
 
@@ -222,23 +207,23 @@ Se observaron 11 procesos adicionales (el padre `stresstest` y diez hijos) y una
 
 **Compilación y registro de la syscall**
 
-![Compilación](documento_TrabajoFinal/05_Evidencias/03_compilacion.png)
+![Compilación](Imagenes/03_compilacion.png)
 
-[Registro de getmetrics](documento_TrabajoFinal/05_Evidencias/02_registro_syscall.png) · [Ejecución de sysmon](documento_TrabajoFinal/05_Evidencias/04_ejecucion_sysmon.png)
+[Registro de getmetrics](Imagenes/02_registro_syscall.png) · [Ejecución de sysmon](Imagenes/04_ejecucion_sysmon.png)
 
 **Durante la prueba de carga**
 
-![Prueba de carga](documento_TrabajoFinal/05_Evidencias/06_prueba_carga.png)
+![Prueba de carga](Imagenes/06_prueba_carga.png)
 
 **Recuperación de recursos**
 
-![Recuperación](documento_TrabajoFinal/05_Evidencias/07_recuperacion.png)
+![Recuperación](Imagenes/07_recuperacion.png)
 
 **Exportación de resultados**
 
-![Exportación CSV](documento_TrabajoFinal/05_Evidencias/08_exportacion_csv.png)
+![Exportación CSV](Imagenes/08_exportacion_csv.png)
 
-[Ver todas las evidencias](documento_TrabajoFinal/05_Evidencias/)
+[Ver todas las evidencias](Imagenes/)
 
 ## Estado de validación
 
@@ -255,13 +240,11 @@ Las evidencias corresponden a las sesiones documentadas. Se recomienda repetir l
 
 ## Documentación
 
-- [Trabajo monográfico (PDF)](documento_TrabajoFinal/01_Trabajo_Monografico.pdf)
-- [Presentación (PDF)](documento_TrabajoFinal/02_Presentacion_TrabajoFinal.pdf)
-- [Guía de implementación (PDF)](documento_TrabajoFinal/03_Guia_Implementacion_Con_Evidencias.pdf)
-- [Guía de implementación (Markdown)](documento_TrabajoFinal/03_Guia_Implementacion_Con_Evidencias.md)
-- [Documentación complementaria](documento_TrabajoFinal/04_Documentacion_Complementaria/)
-- [Evidencias](documento_TrabajoFinal/05_Evidencias/)
-- [Carpeta de resultados](documento_TrabajoFinal/06_Resultados/)
+- Trabajo monográfico (PDF): disponible en la raíz del repositorio.
+- [Presentación (PDF)](Monitor_xv6-riscv_exposicion.pdf)
+- [Guía de implementación (PDF)](Guia%20de%20Proyecto%20Final%20xv6.pdf)
+- [Guía de implementación (Markdown)](Guia%20de%20Implementacion.md)
+- [Evidencias](Imagenes/)
 
 ## Conclusiones
 
@@ -284,7 +267,7 @@ La incorporación de `getmetrics()` y el monitor gráfico permite estudiar el co
 
 ## Licencia
 
-El código base de xv6 se distribuye bajo su licencia original, incluida en `LICENSE`. Se debe conservar dicha licencia y sus avisos de autoría.
+El código base de xv6 se distribuye bajo su licencia original, que debe conservarse en la copia base. Se debe conservar dicha licencia y sus avisos de autoría.
 
 ---
 

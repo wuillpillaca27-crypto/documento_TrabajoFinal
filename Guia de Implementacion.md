@@ -5,7 +5,7 @@ Escuela Profesional de Ingeniería de Sistemas — UNSCH
 
 Este proyecto integra una llamada al sistema con un programa de usuario y una interfaz gráfica en Ubuntu. La variante utilizada tiene `pause()` y `copyout()` de cinco argumentos.
 
-> Conversión de la guía original a Markdown. Las imágenes usan rutas relativas a la carpeta `05_Evidencias`. Los resultados numéricos corresponden a la sesión descrita en la guía y no a una nueva prueba. Los nombres de dos imágenes se adaptaron a la carpeta de evidencias entregada.
+> Conversión de la guía original a Markdown. Las imágenes usan rutas relativas a la carpeta `Imagenes`. Los resultados numéricos corresponden a la sesión descrita en la guía y no a una nueva prueba. Los nombres de dos imágenes se adaptaron a la carpeta de evidencias entregada.
 
 ## 1.     Planteamiento del proyecto
 
@@ -555,17 +555,17 @@ cuando se comprueben, kill y cierre.
 
 ### 6.1. Capturas de ejecución
 
-![Registro de la syscall 29](05_Evidencias/02_registro_syscall.png)
+![Registro de la syscall 29](Imagenes/02_registro_syscall.png)
 
-![Ejecución de sysmon](05_Evidencias/04_ejecucion_sysmon.png)
+![Ejecución de sysmon](Imagenes/04_ejecucion_sysmon.png)
 
-![Monitor inicial](05_Evidencias/05_monitor_inicial.png)
+![Monitor inicial](Imagenes/05_monitor_inicial.png)
 
-![Exportación CSV](05_Evidencias/08_exportacion_csv.png)
+![Exportación CSV](Imagenes/08_exportacion_csv.png)
 
-![Prueba de carga](05_Evidencias/06_prueba_carga.png)
+![Prueba de carga](Imagenes/06_prueba_carga.png)
 
-![Recuperación](05_Evidencias/07_recuperacion.png)
+![Recuperación](Imagenes/07_recuperacion.png)
 
 ## 7.     Protocolo formal de evidencias para la entrega
 
@@ -615,7 +615,7 @@ documento_TrabajoFinal/
   01_Trabajo_Monografico.pdf
   02_Presentacion_TrabajoFinal.pptx
   03_Guia_Implementacion_Con_Evidencias.pdf
-  05_Evidencias/
+  Imagenes/
     00_verificacion_archivos.png
     01_estructura_metrics.png
     02_registro_syscall.png
